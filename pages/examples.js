@@ -25,13 +25,12 @@ PC.pages.examples.renderHTML = function (params) {
   }
 
   return PC.contentfulClient.getEntries(query)
-
   .then(function (entries) {
+    console.log(entries)
     return renderExamples(entries.items)
 
 
   })
-
 
 
 

@@ -41,10 +41,14 @@ PC.pages.categories.renderHTML = function (params) {
   // { name: 'cherries', quantity: 5 }
 
 
+
+
+
     return PC.pages.elements.renderHTML(query)
     .then(function (elementsHTML) {
-      return renderCategoryListPage(entries.items, elementsHTML, selectedCategory)
+      return renderCategoryListPage(entries.items, elementsHTML, selectedCategory )
     })
+
 
 
 
@@ -55,12 +59,12 @@ PC.pages.categories.renderHTML = function (params) {
 }
 
 
-function renderCategoryListPage(categories, elementsHTML, selectedCategory) {
-  console.log(selectedCategory)
+function renderCategoryListPage(categories, elementsHTML, selectedCategory ) {
+
 
   return '<div class="categories">' +
       '<ul class="categories-list">' + renderCategoryList(categories) + '</ul>' +
-      '<div class="elements-list">' + renderSelectedCategory(selectedCategory) + elementsHTML + '</div>'+
+      '<div class="elements-list">' + renderSelectedCategory(selectedCategory) + elementsHTML  + '</div>'+
     '</div>'
 }
 
