@@ -13,16 +13,17 @@ body {
 }
 
 main {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: black;
 }
 
 a {
   border-bottom: 1px dotted #5B9FEF;
-  color: #000000;
+  color:#ffffff;
   text-decoration: none;
 }
 
@@ -30,7 +31,16 @@ a:hover {
     color: blue;
 }
 
+h2 {
+    color: white;
+}
+
+p {
+    color: white;
+}
+
 .app-container {
+    padding: 2%;
     position: absolute;
     height: 100vh;
     width: 100vw;
@@ -44,22 +54,21 @@ a:hover {
 }
 
 .app-container nav {
-    background: #ffffff;
+    background: black;
     position: fixed;
 }
 
 .content-container {
     padding: 5%;
     width: 100%;
-    margin: 8%;
 }
 
 .nav-container {
-  width: 100%;
-  margin: 0 10%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    width: 100%;
+    margin-left: 15%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .app-container nav ul {
@@ -144,12 +153,14 @@ a:hover {
 .element-in-list {
     display: flex;
     width: 50%;
-    padding: 5%;
-    outline-color: black;
+    padding: 3%;
+    outline-color: white;
     outline-width: 0.5px;
     outline-style: solid;
     outline-offset: -0px;
-    background: white;
+    background: black;
+    align-items: center;
+    justify-content: center;
 }
 
 .element-image a {
@@ -193,7 +204,7 @@ a:hover {
 
 .elements-list {
     width: 40%;
-    outline-color: black;
+    outline-color: #ffffff;
     outline-width: 1px;
     outline-style: solid;
     position: sticky;
@@ -224,7 +235,7 @@ a:hover {
   align-items: center;
   margin-bottom: 15px;
   font-size: 4em;
-  color: black;
+  color: #ffffff;
 
 }
 
