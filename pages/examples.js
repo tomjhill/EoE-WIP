@@ -18,16 +18,12 @@ PC.pages.examples.renderHTML = function (params) {
     content_type: PC.config.exampleContentTypeId
   }
 
-  if (params && params.elementId) {
 
-    query['fields.element.sys.id[in]'] = params.elementId
-
-  }
 
   return PC.contentfulClient.getEntries(query)
-  .then(function (entries) {
-    console.log(entries)
-    return renderExamples(entries.items)
+    .then(function (entries) {
+      console.log(entries.items);
+      return renderExamples(entries.items)
 
 
   })
@@ -48,6 +44,7 @@ function renderCategoryTitle(examples) {
 
 
 function renderExamples(examples) {
+    console.log(examples);
   return '<div class="examples">' +
     examples.map(renderSingleExample).join('\n') +
     '</div>'
@@ -70,12 +67,19 @@ function renderExampleDetails(fields) {
 function renderExampleHeader(fields) {
   return '<div class="example-header">' +
     '<h2>' +
-      '<a href="example/' + fields.description + '" data-nav>' +
-        fields.name +
+      '<a href="example/' + fields.brand + '" data-nav>' +
+        fields.brand +
       '</a>'+
     '</h2>' +
+  '</div>'+
+  '<div class="example-header">' +
+    '<p>' +
+        fields.caption +
+    '</p>' +
   '</div>'
 }
+
+
 
 function renderImage(image, caption) {
   if(image && image.fields.file) {
