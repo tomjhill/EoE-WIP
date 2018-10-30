@@ -15,7 +15,10 @@ PC.pages.elements.renderHTML = function (params) {
 
 
   var query = {
-    content_type: PC.config.elementContentTypeId
+
+    content_type: PC.config.elementContentTypeId,
+    order: 'fields.name'
+
   }
 
   if (params && params.categoryId) {
@@ -24,12 +27,12 @@ PC.pages.elements.renderHTML = function (params) {
 
   }
 
-  return PC.contentfulClient.getEntries(query)
 
+
+
+  return PC.contentfulClient.getEntries(query)
   .then(function (entries) {
     return renderElements(entries.items)
-
-
   })
 
 
@@ -37,8 +40,8 @@ PC.pages.elements.renderHTML = function (params) {
 
 
 
-
 }
+
 
 function renderCategoryTitle(elements) {
   return '<h1 class="category-title">Elements</h1>' +
@@ -56,31 +59,35 @@ function renderElements(elements) {
 
 function renderSingleElement(element) {
   var fields = element.fields
+  var elementId = element.sys
   return '<div class="element-in-list">' +
     '<div class="element-details">' +
-      renderElementDetails(fields) +
+      renderElementDetails(fields, elementId) +
     '</div>' +
   '</div>'
 }
 
-function renderElementDetails(fields) {
-  return renderElementHeader(fields)
+function renderElementDetails(fields, elementId) {
+  return renderElementHeader(fields, elementId)
 
 }
 
-function renderElementHeader(fields) {
+function renderElementHeader(fields, elementId) {
+  var currentPath = location.pathname.split('/')
   return '<div class="element-header">' +
     '<h2>' +
-      '<a href="element/' + fields.description + '" data-nav>' +
+      '<a href='+ currentPath[1] + '/' + currentPath[2] + '/element/' + elementId.id + ' data-nav>' +
         fields.name +
       '</a>'+
     '</h2>' +
   '</div>'
 }
 
+
 function renderImage(image, caption) {
+  var currentPath = location.pathname.split('/')
   if(image && image.fields.file) {
-    return '<a href="element/' + caption + '" data-nav>' +
+    return '<a href='+ currentPath[1] + '/' + currentPath[2]  + '/element/' + elementId.id + '" data-nav>' +
       '<img src="' + image.fields.file.url + '" width="150" height="150" />' +
     '</a>'
   } else {

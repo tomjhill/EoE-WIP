@@ -10,6 +10,7 @@ body {
   margin: 0;
   border: none;
   font-family: 'Avenir', sans-serif;
+  background: black;
 }
 
 main {
@@ -36,7 +37,6 @@ h2 {
 }
 
 p {
-    color: white;
 }
 
 .app-container {
@@ -85,7 +85,7 @@ p {
 
 .app-container nav a {
   display: inline-block;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   border-bottom: none;
 }
 
@@ -241,4 +241,115 @@ p {
 
 .categories-list img {
   margin-right: 5px;
+}
+
+li.info {
+    color: white;
+}
+
+
+.examples {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.example-in-list {
+    flex: 0 1 50%;
+    outline-color: #ffffff;
+    outline-width: 1px;
+    outline-style: solid;
+}
+
+.example-info {
+    outline-color: #ffffff;
+    outline-width: 1px;
+    outline-style: solid;
+}
+
+.example-caption {
+    outline-color: #ffffff;
+    outline-width: 1px;
+    outline-style: solid;
+    align-items: center;
+    justify-content: center;
+    padding: 5%;
+}
+
+.example-meta {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    outline-color: #ffffff;
+    outline-width: 1px;
+    outline-style: solid;
+    flex-basis:  auto;
+}
+
+.example-info {
+    color: white;
+}
+
+.example-meta-list {
+    outline-color: #ffffff;
+    outline-width: 1px;
+    outline-style: solid;
+    flex-grow: 1;
+    text-align: center;
+    padding: 5%;
+}
+
+div#examplescontainer {
+    height: 900px;
+    padding: 5%;
+}
+
+.example-slug {
+    outline-color: #ffffff;
+    outline-width: 1px;
+    outline-style: solid;
+    padding: 5%;
+    text-align: center;
+}
+
+.example-details {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    outline-color: #ffffff;
+    outline-width: 1px;
+    outline-style: solid;
+    flex-basis: auto;
+    flex-grow: 1;
+}
+
+.example-details-list {
+    outline-color: #ffffff;
+    outline-width: 1px;
+    outline-style: solid;
+    padding:  5%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    text-align: center;
+}
+
+.product-image {
+    /* outline-color: #ffffff; */
+    /* outline-width: 1px; */
+    /* outline-style: solid; */
+    /* flex-grow: 1; */
+    /* width: 71%; */
+    /* text-align: center; */
+}
+
+img.example-image {
+    width:  100%;
+}
+
+.example-header {
+    flex-grow: 1;
+}
+
+a {
+    color: white;
 }

@@ -11,6 +11,8 @@
 PC.init = function () {
   // Initializes the Contentful client with the required credentials for a
   // element catalog space. Feel free to replace them with our own.
+
+
   PC.contentfulClient = contentful.createClient({
     accessToken: '35538fd31533c33bf28b090b83f00ae7f89e6e71110aa4f0a8e322d4cb191197',
     space: 'n9wg0bz3yhkq'
@@ -24,11 +26,16 @@ PC.init = function () {
     categoryContentTypeId: 'category'
   }
 
+
+
+
   setupHistory()
   setupNavAnchorListeners()
 
   // main container for rendering the app
   PC.container = document.getElementById('content')
+
+  PC.examples = document.getElementById('examplescontainer')
 
   // load the requested route
   loadPage(window.location.href)
@@ -67,6 +74,8 @@ function setupNavAnchorListeners() {
   }, false)
 }
 
+
+
 /**
  * Basic routing mechanism
  *
@@ -77,6 +86,7 @@ function loadPage(href) {
   href = href.replace(document.baseURI, '')
   var urlParts = href.split('/')
   var pageName = urlParts[0]
+  console.log(urlParts)
   // Attempts to get the object which contains the methods to render and setup
   // pages, otherwise defaults to the main page
   var page = PC.pages[pageName] || PC.pages.elements
@@ -86,6 +96,14 @@ function loadPage(href) {
     case 'categories':
       loader = page.renderHTML({
         selectedCategoryId: urlParts[1],
+        selectedElementId: urlParts[3],
+      })
+      break
+      // /categories and /categories/:id
+    case 'category':
+      loader = page.renderHTML({
+        selectedCategoryId: urlParts[1],
+        selectedElementId: urlParts[3],
       })
       break
     // /about
@@ -95,11 +113,11 @@ function loadPage(href) {
     // /element/:id
     case 'element':
       loader = page.renderHTML({
-      productSlug: urlParts[1]
+      selectedElementId: urlParts[1],
       })
       break
     // /brand/:id
-    case 'brand':
+    case 'search':
       loader = page.renderHTML({
         brandId: urlParts[1]
       })
@@ -113,7 +131,8 @@ function loadPage(href) {
     // after rendering is done, run the postRender method if there is one
     if('postRender' in page) {
       setTimeout(function () {
-        page.postRender()
+        page.postRender(urlParts[1], urlParts[3],
+        )
       }, 0)
     }
   })
@@ -122,6 +141,11 @@ function loadPage(href) {
 function injectInPage (HTMLContent) {
   PC.container.innerHTML = HTMLContent
 }
+
+
+
+
+
 
 
 

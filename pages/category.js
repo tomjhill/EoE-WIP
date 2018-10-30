@@ -3,99 +3,113 @@
 PC.pages.category = {}
 
 /**
- * Renders the elements list page
+ * Renders the categories list page
  *
- * The elements list page can optionally be filtered by a category, and will
- * then only show elements from that category. This is only used from the
- * categories page, in order to render lists of elements with only elements
- * from a selected category.
+ * The categories list first gets a list of all existing categories,
+ * then uses the elements page method to render that same code but only
+ * with elements from the selected category.
+ * If no selected category exists, the first from the list is used.
  */
-
 PC.pages.category.renderHTML = function (params) {
 
   console.log(params)
 
-  var query = {
-    content_type: PC.config.categoryContentTypeId
-  }
 
-  if (params && params.categoryId) {
-
-    query['fields.categories.sys.id[in]'] = params.categoryId
-
-  }
-
-  return PC.contentfulClient.getEntries(query)
-
+  return PC.contentfulClient.getEntries({
+    content_type: PC.config.categoryContentTypeId,
+    order: 'fields.title'
+  })
   .then(function (entries) {
-    return renderCategory(entries.items)
+    var query = {}
+    if(params.selectedCategoryId) {
+      query.categoryId = params.selectedCategoryId
+
+
+    }
+
+
+
+
+    function isSelectedCategory(entries) {
+      if(params.selectedCategoryId) {
+        return entries.sys.id === params.selectedCategoryId;
+      }
+
+  }
+
+
+    var selectedCategory = (entries.items.find(isSelectedCategory));
+  // { name: 'cherries', quantity: 5 }
+
+
+
+
+
+    return PC.pages.elements.renderHTML(query)
+    .then(function (elementsHTML) {
+        console.log(query)
+      return renderCategoryListPage(entries.items, elementsHTML, selectedCategory )
+    })
+
+
 
 
   })
+}
 
+PC.pages.category.postRender = function (category, element) {
 
+console.log("herewego " + category + element)
 
+  return PC.pages.examples.renderHTML(category, element)
+  .then(function (entries) {
+    injectInPage(entries)
 
+  })
 
-
-
+  function injectInPage (HTMLContent) {
+    PC.examples.innerHTML = HTMLContent
+  }
 
 }
 
 
-function renderCategory(category) {
-  return '<h1 class="category-title">' + category + '</h1>'
+function renderCategoryListPage(categories, elementsHTML, selectedCategory ) {
+
+
+  return '<div class="categories">' +
+      '<ul class="categories-list">' + renderCategoryList(categories) + '</ul>' +
+      '<div class="elements-list">' + renderSelectedCategory(selectedCategory) + elementsHTML + '</div>'+
+    '</div>'
 }
 
 
-// function renderCategoryTitle(elements) {
-//   return '<h1 class="category-title">Elements</h1>' +
-//     '<div class="elements">' +
-//     elements.map(renderSingleElement).join('\n') +
-//     '</div>'
-// }
-//
-//
-// function renderElements(elements) {
-//   return '<h1 class="category-title">Elements</h1>' +
-//     '<div class="elements">' +
-//     elements.map(renderSingleElement).join('\n') +
-//     '</div>'
-// }
-//
-// function renderSingleElement(element) {
-//   var fields = element.fields
-//   return '<div class="element-in-list">' +
-//     '<div class="element-details">' +
-//       renderElementDetails(fields) +
-//     '</div>' +
-//   '</div>'
-// }
-//
-// function renderElementDetails(fields) {
-//   return renderElementHeader(fields)
-//
-// }
-//
-// function renderElementHeader(fields) {
-//   return '<div class="element-header">' +
-//     '<h2>' +
-//       '<a href="element/' + fields.description + '" data-nav>' +
-//         fields.name +
-//       '</a>'+
-//     '</h2>' +
-//   '</div>'
-// }
-//
-// function renderImage(image, caption) {
-//   if(image && image.fields.file) {
-//     return '<a href="element/' + caption + '" data-nav>' +
-//       '<img src="' + image.fields.file.url + '" width="150" height="150" />' +
-//     '</a>'
-//   } else {
-//     return ''
-//   }
-// }
+
+
+function renderCategoryList(categories) {
+  return '<li><a href="categories" data-nav>All</a></li>'+
+    categories.map(function (category) {
+      var fields = category.fields
+      return '<li>' +
+        '<a href="category/' + category.sys.id + '" data-nav>' + fields.title + '</a>' +
+        '</li>'
+    }).join('\n')
+}
+
+function renderSelectedCategory(selectedCategory) {
+  if(selectedCategory) {
+    return '<div class ="selected-category"> <div class="category-background">' + selectedCategory.fields.background + '</div> <h2 href="categories/' + selectedCategory.fields.title + '" data-nav>' + selectedCategory.fields.title + '</h2>'+
+    '<p>' +  selectedCategory.fields.description + '</p></div>'
+
+
+  }
+}
+
+function getExamples() {
+  return PC.pages.examples.renderHTML()
+}
+
+
 
 
 
