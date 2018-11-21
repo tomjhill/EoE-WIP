@@ -108,8 +108,13 @@ function renderCategoryList(categories) {
 
 function renderSelectedCategory(selectedCategory) {
   if(selectedCategory) {
+<<<<<<< HEAD
+    return '<div class ="selected-category"> <div class="category-background">' + selectedCategory.fields.background + '</div> <h2 href="categories/' + selectedCategory.fields.title + '" data-nav>' + selectedCategory.fields.title + '</h2>'+
+    '<p>' +  selectedCategory.fields.description + '</p></div>'
+=======
     return '<div class ="selected-category"> <div class="category-background">' + selectedCategory.fields.background + '</div> <div class="selectedelementinfo"><h2 href="categories/' + selectedCategory.fields.title + '" data-nav>' + selectedCategory.fields.title + '</h2>'+
     '<p>' +  selectedCategory.fields.description + '</p></div></div>'
+>>>>>>> a9af1a4936e2306ff201bbf95d90e243101820d6
 
 
   }
