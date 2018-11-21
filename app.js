@@ -24,6 +24,9 @@ PC.init = function () {
     categoryContentTypeId: 'category'
   }
 
+
+
+
   setupHistory()
   setupNavAnchorListeners()
 
@@ -85,25 +88,44 @@ function loadPage(href) {
     // /categories and /categories/:id
     case 'categories':
       loader = page.renderHTML({
+        selectedCategoryId: urlParts[0],
+        selectedElementId: urlParts[2]
+      })
+      break
+
+    // /categories and /categories/:id
+    case 'category':
+      loader = page.renderHTML({
         selectedCategoryId: urlParts[1],
       })
       break
+
     // /about
     case 'about':
       loader = page.renderHTML()
       break
+
+    // /element/:id
+    case 'elements':
+      loader = page.renderHTML({
+      elementsSlug: urlParts[1]
+      })
+      break
+
     // /element/:id
     case 'element':
       loader = page.renderHTML({
-      productSlug: urlParts[1]
+        selectedElementId: urlParts[1]
       })
       break
-    // /brand/:id
-    case 'brand':
+
+   // /example/:id
+    case 'example':
       loader = page.renderHTML({
-        brandId: urlParts[1]
+        exampleId: urlParts[1]
       })
       break
+
     // / (index page)
     default:
       loader = page.renderHTML()
