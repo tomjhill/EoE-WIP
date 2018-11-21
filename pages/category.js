@@ -91,7 +91,7 @@ function renderCategoryList(categories) {
     categories.map(function (category) {
       var fields = category.fields
       return '<li>' +
-        '<a href="category/' + category.sys.id + '" data-nav>' + fields.title + '</a>' +
+        '<a href="#category/' + category.sys.id + '" data-nav>' + fields.title + '</a>' +
         '</li>'
     }).join('\n')
 }

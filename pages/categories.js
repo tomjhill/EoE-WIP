@@ -101,15 +101,17 @@ function renderCategoryList(categories) {
     categories.map(function (category) {
       var fields = category.fields
       return '<li>' +
-        '<a href="category/' + category.sys.id + '" data-nav>' + fields.title + '</a>' +
+        '<a href="#category/' + category.sys.id + '" data-nav>' + fields.title + '</a>' +
         '</li>'
     }).join('\n')
 }
 
 function renderSelectedCategory(selectedCategory) {
   if(selectedCategory) {
+
     return '<div class ="selected-category"> <div class="category-background">' + selectedCategory.fields.background + '</div> <div class="selectedelementinfo"><h2 href="categories/' + selectedCategory.fields.title + '" data-nav>' + selectedCategory.fields.title + '</h2>'+
     '<p>' +  selectedCategory.fields.description + '</p></div></div>'
+
 
 
   }
