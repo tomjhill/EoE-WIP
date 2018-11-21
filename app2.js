@@ -35,6 +35,8 @@ PC.init = function () {
   // main container for rendering the app
   PC.container = document.getElementById('content')
 
+  PC.categorieslist = document.getElementById('categorieslist')
+
   PC.examples = document.getElementById('examplescontainer')
 
   // load the requested route

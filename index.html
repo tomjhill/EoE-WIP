@@ -14,11 +14,13 @@
             <img src="./logo.svg" width="" height="32"/>
               <ul>
                 <li><a href="" data-nav>Elements</a></li>
-                <li><a href="categories" data-nav>Categories</a></li>
+                <li><p class="categorymenu">Categories</p></li>
                 <li><a href="about" data-nav>About</a></li>
               </ul>
           </div>
         </nav>
+        <div id="categorieslist" class="content-container">
+        </div>
         <div id="content" class="content-container">
         </div>
         <div id="examplescontainer" class="examples-container">
@@ -34,10 +36,16 @@
         utils: {}
       }
     </script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.js"
+      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+      crossorigin="anonymous">
+    </script>
     <script src="./es6-promise.js" charset="utf-8"></script>
     <script src="https://unpkg.com/contentful@3.3.5/browser-dist/contentful.js" charset="utf-8"></script>
     <script src="https://unpkg.com/marked@0.3.5/marked.min.js" charset="utf-8"></script>
     <script src="./app2.js" charset="utf-8"></script>
+    <script src="./ui.js" charset="utf-8"></script>
     <script src="./utils/utils.js" charset="utf-8"></script>
     <script src="./pages/elements.js" charset="utf-8"></script>
     <script src="./pages/element.js" charset="utf-8"></script>

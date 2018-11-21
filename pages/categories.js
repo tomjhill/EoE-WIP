@@ -45,10 +45,6 @@ PC.pages.categories.renderHTML = function (params) {
 
 
 
-
-
-
-
     return PC.pages.elements.renderHTML(query)
     .then(function (elementsHTML) {
       console.log(query)
@@ -112,8 +108,8 @@ function renderCategoryList(categories) {
 
 function renderSelectedCategory(selectedCategory) {
   if(selectedCategory) {
-    return '<div class ="selected-category"> <div class="category-background">' + selectedCategory.fields.background + '</div> <h2 href="categories/' + selectedCategory.fields.title + '" data-nav>' + selectedCategory.fields.title + '</h2>'+
-    '<p>' +  selectedCategory.fields.description + '</p></div>'
+    return '<div class ="selected-category"> <div class="category-background">' + selectedCategory.fields.background + '</div> <div class="selectedelementinfo"><h2 href="categories/' + selectedCategory.fields.title + '" data-nav>' + selectedCategory.fields.title + '</h2>'+
+    '<p>' +  selectedCategory.fields.description + '</p></div></div>'
 
 
   }

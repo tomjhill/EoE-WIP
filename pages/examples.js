@@ -75,10 +75,6 @@ function renderSingleExample(example) {
 
 function renderExampleDetails(fields, exampleId) {
   return renderExampleHeader(fields, exampleId)+
-  '<div class="product-image">' +
-    renderImage(fields.image[0], fields.slug) +
-  '</div>'  +
-    '<div class="example-info">' +
     '<div class="example-caption">'+
       '<p>' + fields.caption + '</p>'+
     '</div>'+
@@ -92,12 +88,14 @@ function renderExampleDetails(fields, exampleId) {
           '<div class="example-meta-list"><p>' +
       fields.location +
           '</p></div>' +
-      '</div>'+
+      '</div></div>'+
+  '<div class="product-image">' +
+    renderImage(fields.image[0], fields.slug) +
   '</div>'
 }
 
 function renderExampleHeader(fields, exampleId) {
-  return '<div class="example-header">' +
+  return '<div class ="example-info-side"><div class="example-header">' +
     '<div class="example-slug"><h2>' +
         fields.slug +
     '</h2></div>' +

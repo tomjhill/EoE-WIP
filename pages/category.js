@@ -79,7 +79,7 @@ function renderCategoryListPage(categories, elementsHTML, selectedCategory ) {
 
   return '<div class="categories">' +
       '<ul class="categories-list">' + renderCategoryList(categories) + '</ul>' +
-      '<div class="elements-list">' + renderSelectedCategory(selectedCategory) + elementsHTML + '</div>'+
+      '<div class="elements-list">' + renderSelectedCategory(selectedCategory) + elementsHTML +
     '</div>'
 }
 
@@ -98,8 +98,8 @@ function renderCategoryList(categories) {
 
 function renderSelectedCategory(selectedCategory) {
   if(selectedCategory) {
-    return '<div class ="selected-category"> <div class="category-background">' + selectedCategory.fields.background + '</div> <h2 href="categories/' + selectedCategory.fields.title + '" data-nav>' + selectedCategory.fields.title + '</h2>'+
-    '<p>' +  selectedCategory.fields.description + '</p></div>'
+    return '<div class ="selected-category"> <div class="category-background">' + selectedCategory.fields.background + '</div><div class="selected-category-inner"><div class="selected-category-title"> <h2 class="category-inner-title" href="categories/' + selectedCategory.fields.title + '" data-nav>' + selectedCategory.fields.title + '</h2>'+
+    '<p class="category-inner-caption">' +  selectedCategory.fields.description + '</p></div>'
 
 
   }
