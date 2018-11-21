@@ -36,13 +36,7 @@ h2 {
     color: white;
 }
 
-<<<<<<< HEAD
-p {
-    color: white;
-}
-=======
 p {color: white;}
->>>>>>> a9af1a4936e2306ff201bbf95d90e243101820d6
 
 .app-container {
     padding: 2%;
@@ -60,9 +54,6 @@ p {color: white;}
 
 .app-container nav {
     background: black;
-<<<<<<< HEAD
-    position: fixed;
-=======
     position: sticky;
     z-index:  2000;
     width: 100%;
@@ -70,7 +61,6 @@ p {color: white;}
     padding: 2% 0;
     width: 100vw;
     margin-left: calc(-50vw + 50%);
->>>>>>> a9af1a4936e2306ff201bbf95d90e243101820d6
 }
 
 .content-container {
@@ -79,20 +69,12 @@ p {color: white;}
 }
 
 .nav-container {
-<<<<<<< HEAD
-    width: 100%;
-    margin-left: 15%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-=======
     /* width: 100%; */
     margin-left: 5%;
     display: flex;
     /* justify-content: space-between; */
     align-items: center;
     /* top: 0; */
->>>>>>> a9af1a4936e2306ff201bbf95d90e243101820d6
 }
 
 .app-container nav ul {
@@ -227,14 +209,7 @@ p {color: white;}
 }
 
 .elements-list {
-<<<<<<< HEAD
-    width: 40%;
-    outline-color: #ffffff;
-    outline-width: 1px;
-    outline-style: solid;
-=======
     width: 100%;
->>>>>>> a9af1a4936e2306ff201bbf95d90e243101820d6
     position: sticky;
     flex-shrink: 4;
     align-self: flex-start;
@@ -278,11 +253,7 @@ p {color: white;}
   margin-bottom: 15px;
   font-size: 4em;
   color: #ffffff;
-<<<<<<< HEAD
-
-=======
   width: 80%;
->>>>>>> a9af1a4936e2306ff201bbf95d90e243101820d6
 }
 
 .categories-list img {
