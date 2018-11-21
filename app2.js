@@ -91,7 +91,7 @@ function loadPage(href) {
   console.log(urlParts)
   // Attempts to get the object which contains the methods to render and setup
   // pages, otherwise defaults to the main page
-  var page = PC.pages[pageName] || PC.pages.elements
+  var page = PC.pages[pageName] || PC.pages.categories
   var loader
   switch(pageName) {
     // /categories and /categories/:id
@@ -143,11 +143,6 @@ function loadPage(href) {
 function injectInPage (HTMLContent) {
   PC.container.innerHTML = HTMLContent
 }
-
-
-
-
-
 
 
 
